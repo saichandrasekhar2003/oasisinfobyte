@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      border: none;
+      color: #fff;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Temperature Converter</h2>
+    <div class="form-group">
+      <label>
+        <input type="radio" name="conversionType" value="celsiusToFahrenheit" checked> Celsius to Fahrenheit
+      </label>
+      <label>
+        <input type="radio" name="conversionType" value="fahrenheitToCelsius"> Fahrenheit to Celsius
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="temperature">Temperature:</label>
+      <input type="text" id="temperature" placeholder="Enter temperature">
+    </div>
+    <button class="btn" onclick="convertTemperature()">Convert</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      var conversionType = document.querySelector('input[name="conversionType"]:checked').value;
+      var temperature = document.getElementById('temperature').value;
+      var result = document.getElementById('result');
+
+      if (conversionType === "celsiusToFahrenheit") {
+        var convertedTemperature = (temperature * 9 / 5) + 32;
+        result.innerHTML = temperature + "°C is equal to " + convertedTemperature.toFixed(2) + "°F";
+      } else if (conversionType === "fahrenheitToCelsius") {
+        var convertedTemperature = (temperature - 32) * 5 / 9;
+        result.innerHTML = temperature + "°F is equal to " + convertedTemperature.toFixed(2) + "°C";
+      }
+    }
+  </script>
+</body>
+</html>
